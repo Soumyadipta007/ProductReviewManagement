@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ProductReviewManagement
 {
@@ -42,6 +43,11 @@ namespace ProductReviewManagement
             management.RetrieveReview(productReviewList);
             management.skip5Records(productReviewList);
             management.RetrieveReview(productReviewList);
+            DataTable dataTable = management.CreateDataTable(productReviewList);
+            foreach(var list in productReviewList)
+            {
+                dataTable.Rows.Add(list.ProducID,list.UserID,list.Rating,list.Review,list.isLike);
+            }
         }
     }
 }
