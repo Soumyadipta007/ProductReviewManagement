@@ -39,6 +39,7 @@ namespace ProductReviewManagement
             management.TopRecords(productReviewList);
             management.SelectedRecords(productReviewList);
             management.RetrieveCountOfRecords(productReviewList);
+            management.RetrieveReview(productReviewList);
         }
     }
 }
