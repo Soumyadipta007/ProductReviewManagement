@@ -66,12 +66,28 @@ namespace ProductReviewManagement
         }
         public DataTable CreateDataTable(List<ProductReview> listProductReview)
         {
-            dataTable.Columns.Add("ProductID");
-            dataTable.Columns.Add("UserID");
-            dataTable.Columns.Add("Rating");
+            var column1 = new DataColumn("ProductID", typeof(int));
+            dataTable.Columns.Add(column1);
+            var column2 = new DataColumn("UserID", typeof(int));
+            dataTable.Columns.Add(column2);
+            var column3 = new DataColumn("Rating", typeof(double));
+            dataTable.Columns.Add(column3);
             dataTable.Columns.Add("Review");
-            dataTable.Columns.Add("isLike");
+            var column4 = new DataColumn("isLike", typeof(bool));
+            dataTable.Columns.Add(column4);
             return dataTable;
+        }
+        public void RetrieveRecordsWithisLikeTrue(DataTable table)
+        {
+            var recordedData = from productReviews in table.AsEnumerable()
+                               where(productReviews.Field<bool>("isLike")==true)
+                               select productReviews;                             
+            Console.WriteLine("Records with isLike=true are :-");
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine("ProductID:- " + list.Field<int>("ProductID") + " " + "UserID:- " + list.Field<int>("UserID")
+                    + " " + "Rating:- " + list.Field<double>("Rating") + " " + "Review:- " + list.Field<string>("Review") + " " + "isLike:- " + list.Field<bool>("isLike"));
+            }
         }
     }
 }
