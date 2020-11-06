@@ -50,6 +50,7 @@ namespace ProductReviewManagement
             }
             management.RetrieveRecordsWithisLikeTrue(dataTable);
             management.getAvgRatings(productReviewList);
+            management.getNiceReview(productReviewList);
         }
     }
 }
