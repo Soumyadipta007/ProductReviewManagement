@@ -49,6 +49,7 @@ namespace ProductReviewManagement
                 dataTable.Rows.Add(list.ProducID,list.UserID,list.Rating,list.Review,list.isLike);
             }
             management.RetrieveRecordsWithisLikeTrue(dataTable);
+            management.getAvgRatings(productReviewList);
         }
     }
 }

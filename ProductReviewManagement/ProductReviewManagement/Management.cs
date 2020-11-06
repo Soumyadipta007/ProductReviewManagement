@@ -89,5 +89,14 @@ namespace ProductReviewManagement
                     + " " + "Rating:- " + list.Field<double>("Rating") + " " + "Review:- " + list.Field<string>("Review") + " " + "isLike:- " + list.Field<bool>("isLike"));
             }
         }
+        public void getAvgRatings(List<ProductReview> listProductReview)
+        {
+            Console.WriteLine("Avg Rating per Productid-");
+            var recordedData = listProductReview.GroupBy(x => x.ProducID).Select(x => new { Pid=x.Key , Pavg=x.Average(y =>  y.Rating)});
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine(list.Pid + "-----" + list.Pavg);
+            }
+        }
     }
 }
